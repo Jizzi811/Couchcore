@@ -23,7 +23,11 @@
   border-bottom: 1px solid #392c44;
 }
 
-.mode-picker button {
+.chat-card .mode-picker button {
+  width: auto;
+  min-width: max-content;
+  flex: 1 1 135px;
+  line-height: 1.25;
   border: 1px solid #473653;
   background: #130e19;
   color: #92869d;
@@ -32,7 +36,7 @@
   cursor: pointer;
 }
 
-.mode-picker button.active {
+.chat-card .mode-picker button.active {
   border-color: var(--acid);
   background: rgba(183, 255, 0, .1);
   color: var(--acid);
@@ -48,6 +52,7 @@
   .hanf-portrait img,
   .hanf-portrait video { object-position: center 22%; }
   .mode-picker { grid-column: 1 / -1; }
+  .chat-card .mode-picker button { flex-basis: 150px; }
 }
 
 @media (prefers-reduced-motion: reduce) { .thinking { animation: none; } }
