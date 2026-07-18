@@ -138,7 +138,7 @@ export default function Home() {
       </section>}
 
       {active === "chat" && <section className="chat-layout">
-        <article className="character-card"><div className="portrait hanf-portrait"/><p className="eyebrow">ORIGINAL WANHEIMERORT · MIT ALPENANSCHLUSS</p><h2>SCHWEIZER HANFBLÄTTCHEN</h2><p>Duisburger Original, Wahl-Schweizer, Gabber-Fachkraft und Feind jeder frühen Uhrzeit.</p><div className="mood">LAUNE: <b>{chatMode.toUpperCase()}</b></div></article>
+        <article className="character-card"><div className="portrait hanf-portrait"><img src="/assets/schweizer-hanfblaettchen.png" alt="Schweizer Hanfblättchen vor psychedelischem Hintergrund" /></div><p className="eyebrow">ORIGINAL WANHEIMERORT · MIT ALPENANSCHLUSS</p><h2>SCHWEIZER HANFBLÄTTCHEN</h2><p>Duisburger Original, Wahl-Schweizer, Gabber-Fachkraft und Feind jeder frühen Uhrzeit.</p><div className="mood">LAUNE: <b>{chatMode.toUpperCase()}</b></div></article>
         <article className="chat-card">
           <div className="mode-picker" aria-label="Chat-Stimmung">{chatModes.map(mode => <button type="button" key={mode} className={chatMode === mode ? "active" : ""} onClick={() => setChatMode(mode)}>{mode}</button>)}</div>
           <div className="messages">{chat.map((item,i)=><div key={i} className={`message ${item.who}`}><b>{item.who === "hanf" ? "HANFBLÄTTCHEN" : "DU"}</b>{item.text}</div>)}{chatLoading && <div className="message hanf thinking"><b>HANFBLÄTTCHEN</b>Denkt kurz nach … oder ist eingeschlafen.</div>}</div>
