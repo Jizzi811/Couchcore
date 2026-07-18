@@ -24,8 +24,8 @@ export default function Home() {
   const [active, setActive] = useState("couch");
   const [vibe, setVibe] = useState(42);
   const [sleep, setSleep] = useState(9.5);
-  const [trackUrl, setTrackUrl] = useState("https://soundcloud.com/angerfistofficial");
-  const [playerUrl, setPlayerUrl] = useState("https://soundcloud.com/angerfistofficial");
+  const [trackUrl, setTrackUrl] = useState("https://soundcloud.com/angerfistmusic");
+  const [playerUrl, setPlayerUrl] = useState("https://soundcloud.com/angerfistmusic");
   const [message, setMessage] = useState("");
   const [chatMode, setChatMode] = useState(chatModes[0]);
   const [chatLoading, setChatLoading] = useState(false);
