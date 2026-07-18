@@ -1,6 +1,16 @@
 .hanf-portrait {
-  background: linear-gradient(0deg, rgba(10, 4, 15, .5), transparent 60%), url("/assets/schweizer-hanfblaettchen.png") center 28% / cover;
+  position: relative;
+  overflow: hidden;
+  background: #24132f;
   box-shadow: inset 0 0 35px rgba(183, 255, 0, .18);
+}
+
+.hanf-portrait img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 28%;
 }
 
 .mode-picker {
@@ -12,12 +22,7 @@
   border-bottom: 1px solid #392c44;
 }
 
-.chat-card .mode-picker button {
-  width: auto;
-  min-width: max-content;
-  flex: 1 1 135px;
-  font-size: 9px;
-  line-height: 1.25;
+.mode-picker button {
   border: 1px solid #473653;
   background: #130e19;
   color: #92869d;
@@ -26,7 +31,7 @@
   cursor: pointer;
 }
 
-.chat-card .mode-picker button.active {
+.mode-picker button.active {
   border-color: var(--acid);
   background: rgba(183, 255, 0, .1);
   color: var(--acid);
@@ -39,9 +44,8 @@
 @keyframes thinkingPulse { to { opacity: 1; } }
 
 @media (max-width: 800px) {
-  .hanf-portrait { background-position: center 22%; }
+  .hanf-portrait img { object-position: center 22%; }
   .mode-picker { grid-column: 1 / -1; }
-  .chat-card .mode-picker button { flex-basis: 150px; }
 }
 
 @media (prefers-reduced-motion: reduce) { .thinking { animation: none; } }
