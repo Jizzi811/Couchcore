@@ -1,0 +1,51 @@
+.hanf-stage::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 3, 14, .03), transparent 45%, rgba(8, 3, 14, .75)), linear-gradient(0deg, #08050d 0, transparent 42%);
+  pointer-events: none;
+}
+
+.hanf-dancer-wrap {
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 105px;
+  filter: drop-shadow(0 0 18px rgba(183, 255, 0, .3));
+}
+
+.hanf-dancer {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bass-shadow {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 1%;
+  height: 8%;
+  border-radius: 50%;
+  background: #08020d;
+  filter: blur(12px);
+  animation: bassShadow .575s ease-in-out infinite alternate;
+}
+
+.hanf-stage .visualizer { z-index: 1; opacity: .48; }
+.hanf-stage .dj-title { z-index: 2; text-align: right; margin: 0 0 125px auto; max-width: 48%; }
+.hanf-stage .dj-title h2 { font-size: 42px; line-height: .9; margin: 10px 0; }
+.hanf-stage .dj-title p { font-size: 12px; }
+
+@keyframes bassShadow { to { transform: scaleX(.75); opacity: .55; } }
+
+@media (max-width: 800px) {
+  .hanf-stage { height: 560px; }
+  .hanf-dancer-wrap { inset: 0 0 105px; }
+  .hanf-stage .dj-title { max-width: 58%; margin-bottom: 125px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bass-shadow { animation: none; }
+}
