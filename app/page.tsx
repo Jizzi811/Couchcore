@@ -2,13 +2,16 @@
 
 import { FormEvent, useMemo, useState } from "react";
 
-const offlineReplies = [
-  "Der Alpenempfang ist gerade weg. In Wanheimerort hätten wir das WLAN einmal böse angeguckt.",
-  "Produktivität ist auch nur Gruppenzwang mit Kalender.",
-  "Unter 170 BPM ist das für mich ein Podcast.",
-  "Ich bin kein Auswanderer. Ich bin Duisburger mit Alpenanschluss.",
-  "Hier heißt dat Grüezi. In Duisburg reicht Kopfnicken.",
-];
+function getOfflineReply(text: string) {
+  const lower = text.toLowerCase();
+  if (/wer bist|stell dich|dein name/.test(lower)) return "Ich bin das Schweizer Hanfblättchen: in Duisburg-Wanheimerort groß geworden, heute mit Alpenanschluss. Zuständig für Gabber, Couch-Philosophie und professionelles Wegnicken.";
+  if (/kennen wir|kennst du mich|schon mal gesehen/.test(lower)) return "Noch nicht persönlich – ich kenne bisher nur das, was du mir hier im Chat erzählst. Aber wer nachts Gabber hört und morgens nicht aufsteht, gehört praktisch zur erweiterten Couch-Familie.";
+  if (/wie geht|alles gut|was geht/.test(lower)) return "Läuft stabil: Puls auf Gabber, Körper auf Energiesparmodus. Und bei dir?";
+  if (/woher|duisburg|wanheimerort|schweiz/.test(lower)) return "Geboren im Herzen als Wanheimerorter, inzwischen wohnhaft in der Schweiz. Also Duisburger Betriebssystem mit Alpen-Update.";
+  if (/musik|gabber|hardcore|bpm|dj/.test(lower)) return "Musikalisch bin ich einfach gestrickt: Kickdrum an, Vernunft aus. Unter 170 BPM wird erst mal misstrauisch geguckt.";
+  if (/schlaf|müde|couch|bett/.test(lower)) return "Schlaf ist keine Flucht, sondern Schnellreisen für Leute ohne Termine. Ich unterstütze das fachlich.";
+  return `Der Alpenempfang hängt gerade. Zu „${text.slice(0, 70)}“ sage ich trotzdem: Klingt verdächtig interessant – erzähl mal genauer.`;
+}
 
 const chatModes = ["Normal verklatscht", "Duisburger Direktheit", "Schweizer Anpassungsversuch", "Gabber-Eskalation", "Kurz vorm Einschlafen"];
 
@@ -61,7 +64,7 @@ export default function Home() {
       const data = await response.json();
       setChat((items) => [...items, { who: "hanf", text: data.reply }]);
     } catch {
-      const reply = offlineReplies[Math.floor(Math.random() * offlineReplies.length)];
+      const reply = getOfflineReply(text);
       setChat((items) => [...items, { who: "hanf", text: reply }]);
     } finally {
       setChatLoading(false);
