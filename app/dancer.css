@@ -43,7 +43,21 @@
 @media (max-width: 800px) {
   .hanf-stage { height: 560px; }
   .hanf-dancer-wrap { inset: 0 0 105px; }
-  .hanf-stage .dj-title { max-width: 58%; margin-bottom: 125px; }
+  .hanf-stage .dj-title {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 125px;
+    text-align: center;
+  }
+  .hanf-stage .dj-title h2 {
+    max-width: 100%;
+    margin: 10px 0;
+    font-size: clamp(20px, 7vw, 30px);
+    line-height: 1;
+    letter-spacing: -.5px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
