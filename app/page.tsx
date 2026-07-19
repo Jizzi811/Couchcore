@@ -32,6 +32,7 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [chatMode, setChatMode] = useState(chatModes[0]);
   const [chatLoading, setChatLoading] = useState(false);
+  const [trailerOpen, setTrailerOpen] = useState(false);
   const [chat, setChat] = useState([
     { who: "hanf", text: "Grüezi aus der Schweiz – aber mach dir nix vor: innerlich steh ich immer noch in Wanheimerort an der Haltestelle." },
   ]);
@@ -103,17 +104,23 @@ export default function Home() {
       </nav>
 
       {active === "couch" && <section className="dashboard">
-        <article className="scene-card">
-          <div className="poster">NO<br/>SLEEP<br/><span>JUST<br/>BASS</span></div>
-          <div className="lamp"><i/><b/></div>
-          <div className="plant">☘<small>☘</small></div>
-          <button className="couch" onClick={() => setActive("sleep")} aria-label="Schlafbereich öffnen"><i/><span/><b/></button>
-          <div className="hardi"><div className="head">⌁</div><div className="body">H</div><div className="speech">„Ich ruhe nicht.<br/>Ich lade.“</div></div>
-          <div className="rug" />
-          <button className="record-player" onClick={() => setActive("dj")} aria-label="DJ öffnen"><i/><span/></button>
+        <article className="scene-card video-scene">
+          <video
+            src="/assets/couch-alpen.mp4"
+            aria-label="Das Hanfblättchen tanzt vor der Couch mit Alpenblick"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="scene-video-copy">
+            <span>LIVE AUS DER SCHWEIZ</span>
+            <h2>Couch mit Alpenanschluss</h2>
+            <button onClick={() => setTrailerOpen(true)}>SENDUNG ANSEHEN ▶</button>
+          </div>
         </article>
         <div className="side-stack">
-          <article className="episode-card"><span>HEUTIGE FOLGE</span><b>EP. 14</b><h2>Der verschwundene Grinder</h2><p>Das Hanfblättchen beschuldigt den Staubsauger. Der Staubsauger fordert einen Anwalt.</p><button onClick={() => setActive("chat")}>FOLGE STARTEN →</button></article>
+          <article className="episode-card"><span>HEUTIGE FOLGE</span><b>EP. 14</b><h2>Der verschwundene Grinder</h2><p>Das Hanfblättchen beschuldigt den Staubsauger. Der Staubsauger fordert einen Anwalt.</p><button onClick={() => setTrailerOpen(true)}>FOLGE STARTEN ▶</button></article>
           <article className="stats-card"><div><span>LETZTER SCHLAF</span><strong>{sleep.toFixed(1)}h</strong><small>{rank}</small></div><div><span>COUCH-STREAK</span><strong>12</strong><small>Tage konsequent</small></div></article>
         </div>
       </section>}
@@ -153,6 +160,13 @@ export default function Home() {
         <article className="sleep-main"><p className="eyebrow">DAS OFFIZIELLE NICHTSTUN-PROTOKOLL</p><h2>{sleep.toFixed(1)} Stunden</h2><input type="range" min="0" max="18" step="0.5" value={sleep} onChange={e=>setSleep(Number(e.target.value))}/><div className="moon">☾<span>zZ</span></div><h3>{rank}</h3><p>Das Hanfblättchen ist {sleep >= 8 ? "widerwillig beeindruckt" : "enttäuscht von deinem Ehrgeiz"}.</p></article>
         <article className="rank-card"><p className="eyebrow">COUCH-KARRIERE</p>{ranks.map(([hours,name])=><div className={sleep>=hours?"unlocked":""} key={name}><i>{sleep>=hours?"✓":"·"}</i><span><b>{name}</b><small>ab {hours} Stunden</small></span></div>)}</article>
       </section>}
+
+      {trailerOpen && <div className="trailer-modal" role="dialog" aria-modal="true" aria-label="Couchcore – heutige Folge">
+        <button className="trailer-close" onClick={() => setTrailerOpen(false)} aria-label="Video schließen">×</button>
+        <div className="trailer-frame">
+          <video src="/assets/couchcore-trailer.mp4" controls autoPlay playsInline preload="metadata" />
+        </div>
+      </div>}
 
       <footer><span>COUCHCORE v0.1</span><b>Bitte nicht während wichtiger Termine öffnen.</b><span>MADE WITH BASS & BAD IDEAS</span></footer>
     </main>
