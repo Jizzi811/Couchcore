@@ -108,10 +108,10 @@ export default function Home() {
           <video
             src="/assets/couch-alpen.mp4"
             aria-label="Das Hanfblättchen tanzt vor der Couch mit Alpenblick"
-            autoPlay
+            controls
             loop
-            muted
             playsInline
+            preload="metadata"
           />
           <div className="scene-video-copy">
             <span>LIVE AUS DER SCHWEIZ</span>
